@@ -70,7 +70,8 @@ int main()
         if (soption == "2") {
             std::string data;
             std::cout << "\nenter data:";
-            std::cin >> data;
+            std::cin.ignore();
+            std::getline(std::cin, data);
             encrypt(data);
             std::cout << "\n" << data;
         }
@@ -101,7 +102,8 @@ int main()
         if (soption == "2") {
             std::string data;
             std::cout << "\nenter data:";
-            std::cin >> data;
+            std::cin.ignore();
+            std::getline(std::cin, data);
             decrypt(data);
             std::cout << "\n" << data;
         }
