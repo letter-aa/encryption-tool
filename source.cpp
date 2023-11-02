@@ -3,6 +3,12 @@
 #include <string>
 #include <map>
 #include <fstream>
+std::string cin() {
+    std::string data;
+    std::cin.ignore();
+    std::getline(std::cin, data);
+    return data;
+}
 void reverse(std::string& string) {
     std::string ts;
     for (int i = 0; i < string.size(); i++) {
@@ -51,13 +57,11 @@ int main()
         std::cin >> soption;
         if (soption == "1") {
             std::cout << "\nenter name of file: ";
-            std::string toption;
-            std::cin >> toption;
+            std::string toption = cin();
             //LPCWSTR conv = std::wstring(toption.begin(), toption.end()).c_str();
             
             std::cout << "\nenter string for encryption: ";
-            std::string foption;
-            std::cin >> foption;
+            std::string foption = cin();
             std::ofstream file(toption + ".txt");
             encrypt(foption);
             file << foption;
@@ -68,10 +72,8 @@ int main()
             WriteFile(txt, foption.c_str(), br, &br, NULL);*/
         }
         if (soption == "2") {
-            std::string data;
             std::cout << "\nenter data:";
-            std::cin.ignore();
-            std::getline(std::cin, data);
+            std::string data = cin();
             encrypt(data);
             std::cout << "\n" << data;
         }
@@ -100,10 +102,8 @@ int main()
             WriteFile(txt, foption.c_str(), br, &br, NULL);*/
         }
         if (soption == "2") {
-            std::string data;
             std::cout << "\nenter data:";
-            std::cin.ignore();
-            std::getline(std::cin, data);
+            std::string data = cin();
             decrypt(data);
             std::cout << "\n" << data;
         }
