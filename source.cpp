@@ -3,6 +3,7 @@
 #include <string>
 #include <map>
 #include <fstream>
+#include <conio.h>
 std::string cin() {
     std::string data;
     std::cin.ignore();
@@ -52,60 +53,21 @@ int main()
     std::cout << "1 = encrypt \n2 =  decrypt\n";
     std::cin >> foption;
     if (foption == "1") {
-        std::cout << "\n1 = file \n2 = string\n";
-        std::string soption;
-        std::cin >> soption;
-        if (soption == "1") {
-            std::cout << "\nenter name of file: ";
-            std::string toption = cin();
-            //LPCWSTR conv = std::wstring(toption.begin(), toption.end()).c_str();
-            
-            std::cout << "\nenter string for encryption: ";
-            std::string foption = cin();
-            std::ofstream file(toption + ".txt");
-            encrypt(foption);
-            file << foption;
-            file.close();
-            /*
-            HANDLE txt = CreateFile(conv, GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_ENCRYPTED, NULL);
-            DWORD br;
-            WriteFile(txt, foption.c_str(), br, &br, NULL);*/
-        }
-        if (soption == "2") {
-            std::cout << "\nenter data:";
-            std::string data = cin();
-            encrypt(data);
-            std::cout << "\n" << data;
-        }
+        std::cout << "\nenter data:";
+        std::string data = cin();
+        encrypt(data);
+        std::cout << "\n" << data;
+        std::cout << "\n\n" << "press any key to exit...";
+        while (!_kbhit()) {}
+        return 0;
     }
     if (foption == "2") {
-        std::cout << "\n1 = file \n2 = string\n";
-        std::string soption;
-        std::cin >> soption;
-        if (soption == "1") {
-            std::cout << "\nenter name of file: ";
-            std::string toption;
-            std::cin >> toption;
-            //LPCWSTR conv = std::wstring(toption.begin(), toption.end()).c_str();
-            std::ifstream ifile(toption + ".txt");
-            std::string decryptstr = "";
-            std::getline(ifile, decryptstr);
-            decrypt(decryptstr);
-            std::ofstream file;
-            file.open(toption + ".txt");
-            file << decryptstr;
-            file.close();
-            ifile.close();
-            /*
-            HANDLE txt = CreateFile(conv, GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_ENCRYPTED, NULL);
-            DWORD br;
-            WriteFile(txt, foption.c_str(), br, &br, NULL);*/
-        }
-        if (soption == "2") {
-            std::cout << "\nenter data:";
-            std::string data = cin();
-            decrypt(data);
-            std::cout << "\n" << data;
-        }
+        std::cout << "\nenter data:";
+        std::string data = cin();
+        decrypt(data);
+        std::cout << "\n" << data;
+        std::cout << "\n\n" << "press any key to exit...";
+        while (!_kbhit()) {}
+        return 0;
     }    
 }
